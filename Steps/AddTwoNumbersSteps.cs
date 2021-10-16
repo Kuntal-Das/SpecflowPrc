@@ -1,5 +1,6 @@
 using System;
 using TechTalk.SpecFlow;
+using TechTalk.SpecFlow.Assist;
 
 namespace specflowPrc1
 {
@@ -31,6 +32,18 @@ namespace specflowPrc1
             {
                 Console.WriteLine("Test Failed");
                 throw new Exception("The value is different");
+            }
+        }
+
+        [When(@"I fill mandatory details in the form")]
+        public void WhenIFillMandatoryDetailsInTheForm(Table tbl)
+        {
+            // EmployeeDetails empDetails = tbl.CreateInstance<EmployeeDetails>();
+            var empDetails = tbl.CreateSet<EmployeeDetails>();
+
+            foreach (var emp in empDetails)
+            {
+                Console.WriteLine(emp.ToString());
             }
         }
     }
