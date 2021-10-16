@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using TechTalk.SpecFlow;
 using TechTalk.SpecFlow.Assist;
 
@@ -55,13 +56,36 @@ namespace specflowPrc1
         }
 
         [When(@"I fill mandatory details in the form (.*), (.*), (.*) and (.*)")]
-        public void WhenIFillMandatoryDetailsInTheForm(string name, int age, long phone, string email)
+        public void WhenIFillMandatoryDetailsInTheForm(string name, int age, int phone, string email)
         {
-            Console.WriteLine($"\n{name}\t{age}\t{phone}\t{email}");
+            // Console.WriteLine($"\n{name}\t{age}\t{phone}\t{email}");
 
-            _scenarioContext["InfoForNextStep"] = "Step1 Passed";
+            // _scenarioContext["InfoForNextStep"] = "Step1 Passed";
 
-            Console.WriteLine(_scenarioContext["InfoForNextStep"].ToString());
+            // Console.WriteLine(_scenarioContext["InfoForNextStep"].ToString());
+
+            List<EmployeeDetails> empList = new List<EmployeeDetails>();
+
+            empList.Add(new EmployeeDetails()
+            {
+                Name = name,
+                Age = age,
+                Phone = phone,
+                Email = email
+            });
+
+            // Save the value in ScenarioContext
+            _scenarioContext.Add("EmpDetailsList", empList);
+
+            IEnumerable<EmployeeDetails> gotfromScenarioContext = _scenarioContext.Get<IEnumerable<EmployeeDetails>>("EmpDetailsList");
+
+            // foreach (EmployeeDetails emp in gotfromScenarioContext)
+            // {
+            //     Console.WriteLine(emp.ToString());
+            // }
+
+            Console.WriteLine($"\n Title: {_scenarioContext.ScenarioInfo.Title}");
+            Console.WriteLine($"\n CurrentScenarioBlock: {_scenarioContext.CurrentScenarioBlock}");
         }
     }
 }
