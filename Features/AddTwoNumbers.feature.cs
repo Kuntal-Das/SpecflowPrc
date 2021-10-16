@@ -172,6 +172,47 @@ namespace specflowPrc1.Features
             }
             this.ScenarioCleanup();
         }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Create a new employee with mandatory details with scenario outline")]
+        [NUnit.Framework.TestCaseAttribute("Kuntal Das", "23", "123456890", "kuntaldas@email.com", null)]
+        [NUnit.Framework.TestCaseAttribute("John", "30", "981321591", "john@email.com", null)]
+        [NUnit.Framework.TestCaseAttribute("Sam", "42", "416546513", "sam@email.com", null)]
+        public virtual void CreateANewEmployeeWithMandatoryDetailsWithScenarioOutline(string name, string age, string phone, string email, string[] exampleTags)
+        {
+            string[] tagsOfScenario = exampleTags;
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            argumentsOfScenario.Add("Name", name);
+            argumentsOfScenario.Add("Age", age);
+            argumentsOfScenario.Add("Phone", phone);
+            argumentsOfScenario.Add("Email", email);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Create a new employee with mandatory details with scenario outline", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 24
+    this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            bool isScenarioIgnored = default(bool);
+            bool isFeatureIgnored = default(bool);
+            if ((tagsOfScenario != null))
+            {
+                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((this._featureTags != null))
+            {
+                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((isScenarioIgnored || isFeatureIgnored))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 27
+        testRunner.When(string.Format("I fill mandatory details in the form {0}, {1}, {2} and {3}", name, age, phone, email), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
     }
 }
 #pragma warning restore

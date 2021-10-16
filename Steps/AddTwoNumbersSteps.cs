@@ -46,5 +46,11 @@ namespace specflowPrc1
                 Console.WriteLine(emp.ToString());
             }
         }
+
+        [When(@"I fill mandatory details in the form (.*), (.*), (.*) and (.*)")]
+        public void WhenIFillMandatoryDetailsInTheForm(string name, int age, long phone, string email)
+        {
+            Console.WriteLine($"\n{name}\t{age}\t{phone}\t{email}");
+        }
     }
 }
