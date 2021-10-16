@@ -7,6 +7,13 @@ namespace specflowPrc1
     [Binding]
     public class AddTwoNumbersSteps
     {
+        private readonly ScenarioContext _scenarioContext;
+
+        public AddTwoNumbersSteps(ScenarioContext scenarioContext)
+        {
+            _scenarioContext = scenarioContext;
+        }
+
         [Given(@"I have entered (.*) into the calculator")]
         public void GivenIHaveEnteredIntoTheCalculator(int p0)
         {
@@ -51,6 +58,10 @@ namespace specflowPrc1
         public void WhenIFillMandatoryDetailsInTheForm(string name, int age, long phone, string email)
         {
             Console.WriteLine($"\n{name}\t{age}\t{phone}\t{email}");
+
+            _scenarioContext["InfoForNextStep"] = "Step1 Passed";
+
+            Console.WriteLine(_scenarioContext["InfoForNextStep"].ToString());
         }
     }
 }
