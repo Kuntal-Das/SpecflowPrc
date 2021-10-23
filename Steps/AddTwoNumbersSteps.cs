@@ -10,10 +10,12 @@ namespace specflowPrc1
     public class AddTwoNumbersSteps
     {
         private readonly ScenarioContext _scenarioContext;
+        public readonly EmployeeDetails employeeDetails; //POCO Object
 
-        public AddTwoNumbersSteps(ScenarioContext scenarioContext)
+        public AddTwoNumbersSteps(ScenarioContext scenarioContext, EmployeeDetails empDetails)
         {
-            _scenarioContext = scenarioContext;
+            this._scenarioContext = scenarioContext;
+            this.employeeDetails = empDetails;
         }
 
         [Given(@"I have entered (.*) into the calculator")]
@@ -93,6 +95,19 @@ namespace specflowPrc1
 
             Console.WriteLine($"\n Title: {_scenarioContext.ScenarioInfo.Title}");
             Console.WriteLine($"\n CurrentScenarioBlock: {_scenarioContext.CurrentScenarioBlock}");
+        }
+
+        [When(@"I fill all the mandatory details in form")]
+        public void WhenIFillAllTheMandatoryDetailsInForm(Table tbl)
+        {
+            var data = tbl.CreateDynamicSet();
+            foreach (var item in data)
+            {
+                this.employeeDetails.Name = (string)item.Name;
+                this.employeeDetails.Age = (int)item.Age;
+                this.employeeDetails.Email = (string)item.Email;
+                this.employeeDetails.Phone = (long)item.Phone;
+            }
         }
     }
 }

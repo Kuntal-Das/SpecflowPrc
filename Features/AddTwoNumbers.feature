@@ -33,3 +33,9 @@ Feature: AddTwoNumbers
             | Kuntal Das | 23  | 123456890 | kuntaldas@email.com |
             | John       | 30  | 981321591 | john@email.com      |
             | Sam        | 42  | 416546513 | sam@email.com       |
+
+    Scenario: Ckeck if I could get the details entered via Table from Extended Steps
+        When I fill all the mandatory details in form
+            | Name       | Age | Phone      | Email                |
+            | Kuntal Das | 23  | 3241413123 | kuntal.das@email.com |
+        Then I should get the value from Extended steps
