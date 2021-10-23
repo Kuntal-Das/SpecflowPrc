@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using TechTalk.SpecFlow;
 using TechTalk.SpecFlow.Assist;
+using SpecFlow.Assist.Dynamic;
 
 namespace specflowPrc1
 {
@@ -46,12 +47,18 @@ namespace specflowPrc1
         [When(@"I fill mandatory details in the form")]
         public void WhenIFillMandatoryDetailsInTheForm(Table tbl)
         {
-            // EmployeeDetails empDetails = tbl.CreateInstance<EmployeeDetails>();
-            var empDetails = tbl.CreateSet<EmployeeDetails>();
+            // // EmployeeDetails empDetails = tbl.CreateInstance<EmployeeDetails>();
+            // var empDetails = tbl.CreateSet<EmployeeDetails>();
 
+            // foreach (var emp in empDetails)
+            // {
+            //     Console.WriteLine(emp.ToString());
+            // }
+
+            var empDetails = tbl.CreateDynamicSet();
             foreach (var emp in empDetails)
             {
-                Console.WriteLine(emp.ToString());
+                Console.WriteLine($"\nName: {emp.Name}\nPhone: {emp.Phone}\nAge: {emp.Age}\nEmail: {emp.Email}");
             }
         }
 
