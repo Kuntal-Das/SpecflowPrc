@@ -28,7 +28,7 @@ namespace specflowPrc1.Features
         
         private string[] _featureTags = ((string[])(null));
         
-#line 1 "AddTwoNumbers.feature"
+#line 1 "SimpleFeature.feature"
 #line hidden
         
         [NUnit.Framework.OneTimeSetUpAttribute()]
